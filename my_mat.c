@@ -5,7 +5,47 @@
 
 int mat[TEN][TEN]={0};
 int min(int x,int y);
-void dykstra();
+
+
+void dykstra (){
+
+    for(int i=0; i<TEN;i++){
+        for(int j=0;j<TEN;j++){
+            if(i!=j && mat[i][j]==0){
+                mat[i][j]=__INT_MAX__;
+            }
+        }
+    }
+
+    for(int k=0;k<TEN ; k++){
+        for (int i = 0; i < TEN ; i++)
+        {
+            for(int j=0;j<TEN ;j++){
+                int check=0;
+                if (mat[i][k]==__INT_MAX__  || mat[k][j]==__INT_MAX__){
+                    check = __INT_MAX__;
+                }
+                else{
+                     check=(mat[i][k]+mat[k][j]);
+                }
+                mat[i][j]=min(mat[i][j],check);
+            }
+        }
+        
+    } 
+    for(int i=0; i<TEN;i++){
+        for(int j=0;j<TEN;j++){
+            if(i!=j && mat[i][j]==__INT_MAX__){
+                mat[i][j]=0;
+            }
+        }
+    }   
+}
+
+
+
+
+
 
 void copyMat(int to[TEN][TEN],int from[TEN][TEN]){
 
@@ -28,19 +68,18 @@ void A_insert(){
         }
 
     }
+    dykstra();
     
     
 }
 
 void B_isExist(int i, int j){
-    int test[TEN][TEN];
-    copyMat(test,mat);
-    dykstra();
-    if (test[i][j]!=0){
-        printf("True");
+    
+    if (mat[i][j] ==0){
+        printf("False\n");
     }
     else{
-        printf("False");
+        printf("True\n");
     }
     
     
@@ -56,53 +95,15 @@ int min(int x,int y){
     }
 }
 
- void dykstra (){
-
-
-    for(int i=0; i<TEN;i++){
-        for(int j=0;j<TEN;j++){
-            if(i!=j && mat[i][j]==0){
-                mat[i][j]=__INT_MAX__;
-            }
-        }
-    }
-
-
-    for(int k=0;k<TEN ; k++){
-        for (int i = 0; i < TEN ; i++)
-        {
-            for(int j=0;j<TEN ;j++){
-                int check=0;
-                if ( i==j || mat[i][k]==__INT_MAX__  || mat[k][j]==__INT_MAX__){
-                    check = __INT_MAX__;
-                }
-                else{
-                     check=(mat[i][k]+mat[k][j]);
-
-                }
-                mat[i][j]=min(mat[i][j],check);
-
-               
-            }
-        }
-        
-    } 
-    
-    
-    
-}
-
+ 
 
 void C_shortestPath(int x, int y){
-    int test[TEN][TEN];
-    copyMat(test,mat);
-    dykstra();
 
-    if(x!=y && mat[x][y]!=0){
-        printf("%d",mat[x][y]);
+    if(mat[x][y]!=0){
+        printf("%d\n",mat[x][y]);
     }
     else{
-        printf("-1");
+        printf("-1\n");
     }
 
 }
