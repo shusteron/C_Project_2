@@ -3,7 +3,7 @@ FLAGS = -Wall
 all: connections 
 
 connections: main.o my_mat.o
-	gcc $(FLAGS) -o connection main.o my_mat.o
+	gcc $(FLAGS) -o connections main.o my_mat.o
 
 main.o: main.c my_mat.h
 	gcc $(FLAGS) -c main.c
