@@ -47,16 +47,8 @@ void dykstra (){
 
 
 
-void copyMat(int to[TEN][TEN],int from[TEN][TEN]){
-
-    for(int i=0;i <TEN;i++){
-        for(int j=0;j<TEN;j++){
-            to[i][j]=from[i][j];
-        }
-    }
 
 
-}
 
 
 void A_insert(){
